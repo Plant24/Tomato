@@ -10,7 +10,7 @@ import {
   Tabs,
   Tab,
 } from "react-bootstrap";
-import { FaCamera, FaChevronDown, FaChevronRight } from "react-icons/fa";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import { openDB } from "idb";
 import Cropper from "react-cropper";
 import * as tf from "@tensorflow/tfjs";
@@ -408,47 +408,14 @@ export default class Classify extends Component {
                   </Container>
                 )}
                 <Tabs
-                  defaultActiveKey="camera"
+                  defaultActiveKey="localfile"
                   id="input-options"
                   onSelect={this.handleTabSelect}
                   className="justify-content-center"
                 >
-                  <Tab eventKey="camera" title="Take Photo">
-                    <div id="no-webcam" ref="noWebcam">
-                      <span className="camera-icon">
-                        <FaCamera />
-                      </span>
-                      No camera found. <br />
-                      Please use a device with a camera, or upload an image
-                      instead.
-                    </div>
-                    <div className="webcam-box-outer">
-                      <div className="webcam-box-inner">
-                        <video
-                          ref="webcam"
-                          autoPlay
-                          playsInline
-                          muted
-                          id="webcam"
-                          width="448"
-                          height="448"
-                        ></video>
-                      </div>
-                    </div>
-                    <div className="button-container">
-                      <LoadButton
-                        variant="primary"
-                        size="lg"
-                        onClick={this.classifyWebcamImage}
-                        isLoading={this.state.isClassifying}
-                        text="Classify"
-                        loadingText="Classifying..."
-                      />
-                    </div>
-                  </Tab>
-                  <Tab eventKey="localfile" title="Select Local File">
+                  <Tab eventKey="localfile" title="Select Or Take Image File">
                     <Form.Group controlId="file">
-                      <Form.Label>Select Image File</Form.Label>
+                      <Form.Label>Select Or Take Image File</Form.Label>
                       <br />
                       <Form.Label className="imagelabel">
                         {this.state.filename
